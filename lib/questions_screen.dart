@@ -29,30 +29,14 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
           SizedBox(height: 20),
 
-          AnswerButton(
-            answerText: currentQuestion.answers[0],
-            onTap: () {
-              print('Answer 1 tapped!');
-            },
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[1],
-            onTap: () {
-              print('Answer 2 tapped!');
-            },
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[2],
-            onTap: () {
-              print('Answer 3 tapped!');
-            },
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[3],
-            onTap: () {
-              print('Answer 4 tapped!');
-            },
-          ),
+          ...currentQuestion.answers.map((answer) {
+            return AnswerButton(
+              answerText: answer,
+              onTap: () {
+                print('Answer tapped!');
+              },
+            );
+          }),
         ],
       ),
     );
