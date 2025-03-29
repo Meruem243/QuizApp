@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+// import 'package:quizapp/questions_screen.dart';
+// import 'package:quizapp/quiz.dart';
 
 class HomeScrn extends StatelessWidget {
-  const HomeScrn({super.key});
+  const HomeScrn(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -26,7 +30,7 @@ class HomeScrn extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: startQuiz,
             style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
             icon: const Icon(Icons.arrow_right_alt),
             label: const Text(
