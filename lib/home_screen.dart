@@ -12,13 +12,16 @@ class HomeScrn extends StatelessWidget {
           Image.asset('assets/images/quiz-logo.png', width: 300),
 
           const SizedBox(height: 20),
-          Text('Quiz App', style: TextStyle(fontSize: 30, color: Colors.white)),
+          Text(
+            'Test your knowledge here!',
+            style: TextStyle(fontSize: 30, color: Colors.white),
+          ),
           const SizedBox(height: 20),
-          OutlinedButton(
+          OutlinedButton.icon(
             onPressed: () {},
             style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
-
-            child: const Text(
+            icon: const Icon(Icons.arrow_right_alt),
+            label: const Text(
               'Start Quiz',
               // style: TextStyle(color: Colors.white),
             ),
