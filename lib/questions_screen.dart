@@ -3,6 +3,8 @@ import 'package:quizapp/answer_button.dart';
 
 import 'package:quizapp/data/questions.dart';
 
+import 'package:google_fonts/google_fonts.dart';
+
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
 
@@ -35,7 +37,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               currentQuestion.text,
               textAlign: TextAlign.center,
 
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
             ),
 
             SizedBox(height: 20),

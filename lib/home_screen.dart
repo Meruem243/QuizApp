@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:quizapp/questions_screen.dart';
 // import 'package:quizapp/quiz.dart';
 
@@ -26,7 +27,7 @@ class HomeScrn extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             'Test your knowledge here!',
-            style: TextStyle(fontSize: 30, color: Colors.white),
+            style: GoogleFonts.lato(fontSize: 30, color: Colors.white),
           ),
           const SizedBox(height: 20),
           OutlinedButton.icon(
