@@ -10,37 +10,72 @@ class HomeScrn extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            'assets/images/quiz-logo.png',
-            width: 300,
-            color: const Color.fromARGB(175, 255, 255, 255),
-          ),
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
-          // Opacity(
-          //   opacity: 0.5,
-          //   child: Image.asset('assets/images/quiz-logo.png', width: 300),
-          // ),
-          const SizedBox(height: 20),
-          Text(
-            'Test your knowledge here!',
-            style: GoogleFonts.lato(fontSize: 30, color: Colors.white),
-          ),
-          const SizedBox(height: 20),
-          OutlinedButton.icon(
-            onPressed: startQuiz,
-            style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
-            icon: const Icon(Icons.arrow_right_alt),
-            label: const Text(
-              'Start Quiz',
-              // style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
+    return Center(
+      child:
+          isLandscape
+              ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Image.asset(
+                      'assets/images/quiz-logo.png',
+                      width: 200,
+                      height: 350,
+                      color: const Color.fromARGB(175, 255, 255, 255),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Test your knowledge here!',
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        OutlinedButton.icon(
+                          onPressed: startQuiz,
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                          ),
+                          icon: const Icon(Icons.arrow_right_alt),
+                          label: const Text('Start Quiz'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+              : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/images/quiz-logo.png',
+                    width: 300,
+                    color: const Color.fromARGB(175, 255, 255, 255),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Test your knowledge here!',
+                    style: GoogleFonts.lato(fontSize: 30, color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+                  OutlinedButton.icon(
+                    onPressed: startQuiz,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                    ),
+                    icon: const Icon(Icons.arrow_right_alt),
+                    label: const Text('Start Quiz'),
+                  ),
+                ],
+              ),
     );
   }
 }

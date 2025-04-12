@@ -30,6 +30,8 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final summaryData = getSummaryData();
     final numCorrectAnswers =
         summaryData.where((data) {
@@ -41,32 +43,60 @@ class ResultScreen extends StatelessWidget {
       width: double.infinity,
       child: Container(
         margin: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'You answered $numCorrectAnswers out of $totalQuestions questions correctly',
-              style: const TextStyle(
-                fontSize: 20, // Increased font size
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30),
-            QuestionSummary(summaryData),
-            const SizedBox(height: 30),
-            TextButton.icon(
-              onPressed: () {
-                resetQuiz();
-              },
-              icon: const Icon(Icons.refresh),
-              label: const Text('Restart Quiz'),
-              style: TextButton.styleFrom(
-                textStyle: const TextStyle(fontSize: 16),
-              ),
-            ),
-            const SizedBox(height: 30),
-          ],
-        ),
+        child:
+            isLandscape
+                ? Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'You answered $numCorrectAnswers out of $totalQuestions questions correctly',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          TextButton.icon(
+                            onPressed: resetQuiz,
+                            icon: const Icon(Icons.refresh),
+                            label: const Text('Restart Quiz'),
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(child: QuestionSummary(summaryData)),
+                  ],
+                )
+                : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'You answered $numCorrectAnswers out of $totalQuestions questions correctly',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    QuestionSummary(summaryData),
+                    const SizedBox(height: 30),
+                    TextButton.icon(
+                      onPressed: resetQuiz,
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Restart Quiz'),
+                      style: TextButton.styleFrom(
+                        textStyle: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                ),
       ),
     );
   }
